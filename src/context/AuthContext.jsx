@@ -40,9 +40,10 @@ export const AuthContextProvider = ({ children }) => {
 
     }
     useEffect(() => {
+        setIsLoaded(true)
         const authState = () => {
             return onAuthStateChanged(auth, (user) => {
-                setIsLoaded(true)
+                // setIsLoaded(true)
                 if (user) {
                     setIsLoggedIn(true)
                     setUserEmail(user.email)
