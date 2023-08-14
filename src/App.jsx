@@ -19,7 +19,7 @@ function App() {
   const { isLoaded } = useContext(AuthContext);
   if (!isLoaded) return <div>loading...</div>;
   return (
-    <div>
+    <div className="">
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/sign-in" element={<SignIn />}></Route>

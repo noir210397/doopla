@@ -30,7 +30,7 @@ const Account = () => {
     return () => {
       document.removeEventListener("keydown", handleEscapeKey);
       window.removeEventListener("resize", handleBodyScroll);
-      document.body.style.overflow = "";
+      // document.body.style.overflow = "";
     };
   }, [drawer]);
 
@@ -38,14 +38,14 @@ const Account = () => {
     <div className="font-lora">
       <div
         className={` absolute inset-0 bg-black bg-opacity-20  ${
-          drawer ? "translate-x-0" : "translate-x-full"
+          drawer ? "translate-x-0" : "-translate-x-full"
         } z-50`}
       >
         <div
           onClick={() => {
             setDrawer(!drawer);
           }}
-          className={`absolute inset-y-0 end-0 md:start-3/4 bg-white z-50  shadow-md start-0 shadow-black p-2`}
+          className={`absolute inset-y-0 end-0 md:start-3/4 bg-white z-50 start-0 shadow-black p-2`}
         >
           <div className=" flex justify-between items-center py-2">
             <p className="font-extrabold text-xl">Account settings</p>
