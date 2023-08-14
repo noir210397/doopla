@@ -106,7 +106,7 @@ const Account = () => {
           }}
           className="p-1 md:p-3 border-2 border-purple-500 rounded-md  md:text-base"
         >
-          <i className="fa-solid fa-gear md:me-1 "></i>
+          <i className="fa-solid fa-gear md:me-1 text-xl md:text-base"></i>
           <span className="hidden md:inline">Settings</span>
         </button>
       </div>
