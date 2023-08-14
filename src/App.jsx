@@ -1,4 +1,23 @@
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home";
+import SignIn from "./pages/SignIn";
+import Register from "./pages/Register";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Account from "./pages/Account";
+import Saved from "./pages/Saved";
+import Pay from "./pages/Pay";
+import HousePrices from "./pages/HousePrices.jsx";
+import AgentValuation from "./pages/AgentValuation.jsx";
+import InstantValuation from "./pages/InstantValuation.jsx";
+import { useContext } from "react";
+import AuthContext from "./context/AuthContext";
+import Sale from "./pages/Sale";
+import Rent from "./pages/Rent";
+
 function App() {
+  const { isLoaded } = useContext(AuthContext);
+  if (!isLoaded) return <div>ll</div>;
   return (
     <div>
       <Routes>
