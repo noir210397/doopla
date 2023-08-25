@@ -131,10 +131,13 @@ const Form = ({ value, text }) => {
           <i className="fa-brands fa-facebook"></i> Facebook
         </button>
       </div>
-      <p className="relative text-center ">
+      <p className="relative text-center">
         <span className="bg-white px-1">or {value} with your email</span>
         <span className="absolute top-1/2 left-0 transform -translate-y-1/2 w-full border-b-2 -z-10 border-gray-500"></span>
         <span className="absolute top-1/2 right-0 transform -translate-y-1/2 w-full border-b-2 -z-10 border-gray-500"></span>
+        {/* <span className="block h-[2px] bg-gray-500 flex-1"></span>
+        <span className="bg-white px-1">or {value} with your email</span>
+        <span className="block h-[2px] bg-gray-500 flex-1"></span> */}
       </p>
       <form
         className="mt-6"

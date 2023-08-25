@@ -1,19 +1,82 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import image from "../images/Homepage-hero-image-new-homes.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+// import Spinner from "./Spinner";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 const Container = () => {
   const [buttonValue, setButtonValue] = useState("sale");
-  // const search = (x) => {
-  //   if (x === "rent") {
-  //     setButtonValue("rent");
-  //   } else if (x === "sale") {
-  //     setButtonValue("sale");
-  //   } else {
-  //     setButtonValue("house");
-  //   }
-  // };
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [errTerm, setErrTerm] = useState(false);
+  const navigate = useNavigate();
+  const { setSearched, setSearchTerm } = useContext(AuthContext);
+  const searching = () => {
+    // e.preventDefault();
+    function generateRandomLetters(length) {
+      const alphabet = "abcdefghijklmnopqrstuvwxyz";
+      let randomLetters = "";
+
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * alphabet.length);
+        const randomChar = alphabet.charAt(randomIndex);
+        randomLetters += randomChar;
+      }
+
+      return randomLetters;
+    }
+    const randomLetters = generateRandomLetters(45);
+    async function fetchData() {
+      // setIsSearching(!isSearching);
+      const value = buttonValue;
+      const url = `https://zoopla.p.rapidapi.com/properties/list?area=${searchValue}&category=residential&listing_status=${value}&order_by=age&ordering=descending&page_number=1&page_size=80`;
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "97701e4eb5msh98aadf632f4312fp118d30jsndd272c266d02",
+          "X-RapidAPI-Host": "zoopla.p.rapidapi.com",
+        },
+      };
+      try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        setIsSearching(!isSearching);
+        setSearched(result.listing);
+        setSearchTerm(value);
+        sessionStorage.setItem(
+          "search",
+          JSON.stringify([value, result.listing])
+        );
+        sessionStorage.removeItem("properties");
+        navigate(`/search/${buttonValue}?-${randomLetters}`);
+      } catch (error) {
+        setIsSearching(!isSearching);
+        navigate("/search");
+      }
+    }
+    fetchData();
+  };
+  const searchValidation = (e) => {
+    e.preventDefault();
+    setIsSearching(true);
+    function matchesUKArea(input) {
+      const regex =
+        /(?:[A-Za-z]+\b(?:[- ](?:upon|the)?\b[A-Za-z]+)*)|(?:[A-Za-z]{1,2}\d[A-Za-z\d]?\s\d[A-Za-z]{2})|(?:[A-Za-z]{1,2}\d[A-Za-z]?)|(?:[A-Za-z]{2}\d[A-Za-z]{2})$/;
+      return regex.test(input);
+    }
+    const valid = matchesUKArea(searchValue);
+    if (valid) {
+      searching();
+      setErrTerm("");
+    } else {
+      setErrTerm("please enter a valid uk area or postal code e.g Oxford NW3");
+      setIsSearching(false);
+    }
+  };
+
   return (
     <div className=" relative">
       <div className="md:h-[70vh] h-[60vh] relative">
@@ -72,24 +135,54 @@ const Container = () => {
               </div>
 
               <div className="">
-                <form action="" className="text-start max-w-2xl mx-auto">
+                <form
+                  action=""
+                  onSubmit={searchValidation}
+                  className="text-start max-w-2xl mx-auto relative"
+                >
                   <label htmlFor="" className="p-2">
                     Enter a city, town or postcode
                   </label>
+                  <span
+                    className={`text-red-600 block px-2 capitalize   ${
+                      errTerm ? "" : "hidden"
+                    }`}
+                  >
+                    {errTerm}
+                  </span>
                   <div className="flex flex-col md:flex-row px-2 mt-2">
                     <div className="md:flex-1 ">
                       <input
+                        onChange={(e) => {
+                          setSearchValue(e.target.value);
+                        }}
+                        value={searchValue}
                         type="text"
                         placeholder="e.g Oxford or NW3"
                         className="border border-gray-400 w-full h-full py-2 px-4 rounded outline-none focus:outline-purple-700 outline "
                       />
                     </div>
+
                     {/* <div className=" bg-blue-600 w-max"> */}
-                    <button className="bg-purple-600 py-2 px-4 rounded text-white text-lg md:mx-2 mt-4 md:my-0">
+
+                    <button
+                      disabled={isSearching}
+                      className="bg-purple-600 py-2 px-4 rounded text-white text-lg md:mx-2 mt-4 md:my-0"
+                    >
                       <FontAwesomeIcon
                         icon={faMagnifyingGlass}
-                        className="mr-2 "
+                        className={`mr-2 ${isSearching ? "hidden" : ""}`}
                       />
+                      <i
+                        className={`fa-solid fa-circle-notch animate-spin mr-2 ${
+                          isSearching ? "" : "hidden"
+                        }`}
+                      ></i>
+                      {/* <i
+                        className={`fa-regular fa-hourglass mr-2 animate-wiggle ${
+                          isSearching ? "" : "hidden"
+                        }`}
+                      ></i> */}
                       Search
                     </button>
                     {/* </div> */}

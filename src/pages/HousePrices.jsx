@@ -51,6 +51,7 @@ const HousePrices = () => {
         text={prices.text}
         desc={prices.desc}
         image={image}
+        value="house"
       />
       <HomeSlider data={data} />
       <Footer />

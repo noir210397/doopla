@@ -9,7 +9,7 @@ const HomeSlider = ({ data }) => {
       </h1>
       <p className="text-lg py-1">Just ask Zoopla.</p>
       <div>
-        <div className=" overflow-hidden grid md:grid-cols-3 justify-center grid-flow-row md:gap-6 gap-3">
+        <div className=" overflow-hidden grid md:grid-cols-2 lg:grid-cols-3 justify-center grid-flow-row md:gap-6 gap-3 px-2">
           {data.map((item) => {
             return (
               <div className="max-w-md md:w-full pb-2  " key={item.header}>

@@ -10,7 +10,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
-// import AuthContext from "../context/AuthContext";
 
 const NavBar = () => {
   const [active, setActive] = useState(false);
@@ -58,7 +57,7 @@ const NavBar = () => {
           </p>
         </button>
         <Link to={"/"}>
-          <div className="text-purple-700 font-pacifico font-bold text-xl md:text-2xl lg:text-3xl">
+          <div className="text-purple-700 font-pacifico font-bold text-xl  md:text-3xl ">
             ZOOPLA
           </div>
         </Link>
@@ -70,7 +69,7 @@ const NavBar = () => {
         >
           <ul
             onClick={rest}
-            className={`absolute flex flex-col inset-y-0 start-0 end-1/3 bg-purple-200 z-50  transition-all pt-10 ps-4 md:ps-0 md:pt-0 md:transform-none md:bg-transparent md:relative md:block lg:relative`}
+            className={`absolute flex flex-col inset-y-0 start-0 end-1/3 bg-purple-200 z-50   transition-all pt-10 ps-4 md:ps-0 md:pt-0 md:transform-none md:bg-transparent md:relative md:block lg:relative`}
           >
             <button
               onClick={rest}
@@ -93,16 +92,7 @@ const NavBar = () => {
                 House Prices
               </li>
             </Link>
-            <Link to={"/agent-valuation"}>
-              <li className="inline-block px-2  hover:underline hover:underline-purple-700 decoration-2 my-4 md:my-0">
-                Agent Valuation
-              </li>
-            </Link>
-            <Link to={"/instant-valuation"}>
-              <li className="inline-block px-2  hover:underline hover:underline-purple-700 decoration-2 my-4 md:my-0">
-                Instant Valuation
-              </li>
-            </Link>
+
             <Link
               className={`${isLoggedIn ? "block md:hidden" : "hidden"}`}
               to={"/account"}
@@ -121,7 +111,7 @@ const NavBar = () => {
                 icon={faHouseChimney}
                 className="text-slate-600 md:hidden lg:hidden"
               />
-              <Link className="text-xs md:text-base" to={"/"}>
+              <Link className="text-xs  md:text-base" to={"/"}>
                 My Home
               </Link>
             </div>
@@ -136,7 +126,7 @@ const NavBar = () => {
                 icon={faHeart}
                 className="text-slate-600 md:hidden lg:hidden"
               />
-              <Link className="text-xs md:text-base" to={"/saved"}>
+              <Link className="text-xs md:text-base " to={"/saved"}>
                 Saved
               </Link>
             </div>
@@ -148,7 +138,10 @@ const NavBar = () => {
                 icon={faCircleUser}
                 className="text-slate-600 md:hidden lg:hidden"
               />
-              <Link className="text-xs md:text-base" to={"/sign-in"}>
+              <Link
+                className="text-xs md:text-[15px] lg:text-base"
+                to={"/sign-in"}
+              >
                 Sign in
               </Link>
             </div>

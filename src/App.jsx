@@ -14,14 +14,20 @@ import { useContext } from "react";
 import AuthContext from "./context/AuthContext";
 import Sale from "./pages/Sale";
 import Rent from "./pages/Rent";
+import Loading from "./components/Loading";
+import Search from "./pages/Search";
+import Error from "./pages/Error";
+import SingleProperty from "./pages/SingleProperty";
+import Firestore from "./pages/Firestore";
 
 function App() {
   const { isLoaded } = useContext(AuthContext);
-  if (!isLoaded) return <div>loading...</div>;
+  if (!isLoaded) return <Loading />;
   return (
     <div className="">
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="*" element={<Error />} />
         <Route path="/sign-in" element={<SignIn />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/pay" element={<Pay />}></Route>
@@ -30,6 +36,13 @@ function App() {
         <Route path="/house-prices" element={<HousePrices />}></Route>
         <Route path="/agent-valuation" element={<AgentValuation />}></Route>
         <Route path="/instant-valuation" element={<InstantValuation />}></Route>
+        <Route path="/search/:id" element={<Search />}></Route>
+        <Route path="/error-page-not-found" element={<Error />}></Route>
+        <Route path="/firestore" element={<Firestore />}></Route>
+        <Route
+          path="/search/single-property/:id"
+          element={<SingleProperty />}
+        ></Route>
         <Route element={<ProtectedRoute />}>
           <Route element={<Account />} path="/account" />
           <Route element={<Saved />} path="/saved" />

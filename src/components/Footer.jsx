@@ -19,9 +19,9 @@ const business = ["List with Zoopla", "ZooplaPro", "Alto Software"];
 
 const Footer = () => {
   return (
-    <div className="bg-[#f7f6f5] pb-5">
-      <div className="grid md:grid-cols-4 max-w-7xl mx-auto py-3 grid-flow-row md:px-0 px-2">
-        <div>
+    <div className="bg-[#f7f6f5] pb-5 px-2">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto py-3 grid-flow-row md:px-0 px-2">
+        <div className="px-2">
           <h3 className="capitalize text-lg text-[#8b2744] py-3">for sale</h3>
           <ul>
             {sale.map((item) => {
@@ -38,7 +38,7 @@ const Footer = () => {
           <hr className="bg-gray-400 md:hidden" />
         </div>
 
-        <div>
+        <div className="px-2">
           <h3 className="capitalize text-lg text-[#8b2744] py-3">for rent</h3>
           <ul>
             {rent.map((item) => {
@@ -55,7 +55,7 @@ const Footer = () => {
           <hr className="bg-gray-400 md:hidden" />
         </div>
 
-        <div>
+        <div className="px-2">
           <h3 className="capitalize text-lg text-[#8b2744] py-3">
             News and guides
           </h3>
@@ -74,7 +74,7 @@ const Footer = () => {
           <hr className="bg-gray-400 md:hidden" />
         </div>
 
-        <div>
+        <div className="px-2">
           <h3 className="capitalize text-lg text-[#8b2744] py-3">
             Zoopla for business
           </h3>

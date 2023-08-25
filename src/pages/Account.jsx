@@ -86,17 +86,11 @@ const Account = () => {
           </h1>
         </div>
       </div>
-      <div className="md:p-8 p-2 flex justify-between ">
-        <ul className="flex text-sm md:text-base">
-          <Link className="mr-1 md:mr-4">
+      <div className="md:p-8 p-2 flex justify-between">
+        <ul className="flex text-base md:text-lg min-h-full justify-center items-center">
+          <Link className="mr-1 md:mr-4 hover:underline decoration-2 decoration-purple-500 ">
             <li>
-              <i className="fa-regular fa-heart me-1"></i>Saved
-            </li>
-          </Link>
-          <Link>
-            <li>
-              <i className="fa-solid fa-magnifying-glass me-1"></i>Searches and
-              Alerts
+              <i className="fa-regular fa-heart me-1"></i>Saved Properties
             </li>
           </Link>
         </ul>
@@ -104,10 +98,10 @@ const Account = () => {
           onClick={() => {
             setDrawer(!drawer);
           }}
-          className="p-1 md:p-3 border-2 border-purple-500 rounded-md  md:text-base"
+          className="p-2 md:p-3 border-2 border-purple-500 rounded-md  md:text-base"
         >
-          <i className="fa-solid fa-gear md:me-1 text-xl md:text-base"></i>
-          <span className="hidden md:inline">Settings</span>
+          <i className="fa-solid fa-gear me-1 text-xl md:text-base"></i>
+          <span className="">Settings</span>
         </button>
       </div>
       <div>
