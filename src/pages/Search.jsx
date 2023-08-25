@@ -32,28 +32,32 @@ const Search = () => {
     };
   }
   useEffect(() => {
-    let firstTwoLetters = id.slice(0, 2);
-    let items = JSON.parse(sessionStorage.getItem("properties"));
-    if (
-      firstTwoLetters === "re" ||
-      firstTwoLetters === "sa" ||
-      firstTwoLetters === "ho"
-    ) {
-      if (searched.length > 1) {
-        if (items) {
-          setProperties(items);
-          setIsLoaded(true);
+    if (searched === null || searched === undefined) {
+      navigate(`/not-found`);
+    } else {
+      let firstTwoLetters = id.slice(0, 2);
+      let items = JSON.parse(sessionStorage.getItem("properties"));
+      if (
+        firstTwoLetters === "re" ||
+        firstTwoLetters === "sa" ||
+        firstTwoLetters === "ho"
+      ) {
+        if (searched.length > 0) {
+          if (items) {
+            setProperties(items);
+            setIsLoaded(true);
+          } else {
+            let houses = arrayOfPropertiesDisplayed(0);
+            setPaginate(10);
+            setProperties(houses());
+            setIsLoaded(true);
+          }
         } else {
-          let houses = arrayOfPropertiesDisplayed(0);
-          setPaginate(10);
-          setProperties(houses());
-          setIsLoaded(true);
+          navigate("/error-page-not-found");
         }
       } else {
         navigate("/error-page-not-found");
       }
-    } else {
-      navigate("/error-page-not-found");
     }
   }, []);
   if (!isLoaded) {

@@ -19,6 +19,7 @@ import Search from "./pages/Search";
 import Error from "./pages/Error";
 import SingleProperty from "./pages/SingleProperty";
 import Firestore from "./pages/Firestore";
+import NoProperties from "./pages/NoProperties";
 
 function App() {
   const { isLoaded } = useContext(AuthContext);
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="*" element={<Error />} />
+        <Route path="/not-found" element={<NoProperties />} />
         <Route path="/sign-in" element={<SignIn />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/pay" element={<Pay />}></Route>
