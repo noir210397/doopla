@@ -146,7 +146,7 @@ const DataCard = ({
             : ""}
         </div>
       </div>
-      <div className="flex-1 rounded-md  ">
+      <div className="flex-1 rounded-md bg-white ">
         <div className="md:text-lg text-base relative px-2  ">
           <div className="flex flex-col py-2">
             <span className={`font-semibold `}>
