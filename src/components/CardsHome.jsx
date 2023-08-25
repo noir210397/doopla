@@ -18,7 +18,10 @@ const CardsHome = () => {
             Research expert Richard Donnell reveals 3 key housing trends in May
             2023.
           </p>
-          <Link className="py-2 px-2 mt-4 border-2 rounded border-purple-500 text-lg ml-1">
+          <Link
+            to={`/register`}
+            className="py-2 px-2 mt-4 border-2 rounded border-purple-500 text-lg ml-1"
+          >
             Register to stay up to date
           </Link>
         </div>
