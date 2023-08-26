@@ -35,9 +35,8 @@ const Container = () => {
       const options = {
         method: "GET",
         headers: {
-          "X-RapidAPI-Key":
-            "97701e4eb5msh98aadf632f4312fp118d30jsndd272c266d02",
-          "X-RapidAPI-Host": "zoopla.p.rapidapi.com",
+          "X-RapidAPI-Key": import.meta.env.VITE_REACT_APP_RAPID_API_KEY,
+          "X-RapidAPI-Host": import.meta.env.VITE_REACT_APP_X_RAPIDAPI_HOST,
         },
       };
       try {
