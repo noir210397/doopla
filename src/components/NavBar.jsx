@@ -63,7 +63,7 @@ const NavBar = () => {
         </Link>
         <div
           onClick={rest}
-          className={`absolute inset-0 z-50 bg-black bg-opacity-20 ${
+          className={`fixed inset-0 z-50 bg-black bg-opacity-20 ${
             active ? "translate-x-0" : "-translate-x-full"
           } transition-all pt-10 ps-4 md:ps-0 md:pt-0 md:transform-none md:bg-transparent md:relative md:block lg:relative `}
         >
